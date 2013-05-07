@@ -1,0 +1,33 @@
+<%= form_for(@quiz) do |f| %>
+  <% if @quiz.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
+
+      <ul>
+      <% @quiz.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, 'Название дисциплины' %><br />
+    <%= f.text_field :name %>
+  </div>
+  <table>
+    <% @subjects.each do |subject| %>
+    <tr>
+      <td>
+	<%= label_tag subject.id, subject.name %>
+      </td>
+      <td>
+	<%= number_field_tag subject.id, 0, in: 0...subject.questions.count %>
+      </td>
+    </tr>    
+<% end %>
+  </table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

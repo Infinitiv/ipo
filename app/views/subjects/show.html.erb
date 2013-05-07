@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @subject.name %>
+</p>
+<%= link_to 'Edit', edit_subject_path(@subject) %> |
+<%= link_to 'Back', subjects_path %>
+<%= will_paginate @questions, :previous_label => 'Назад', :next_label => 'Вперед', :page_gap => "..." %>
+<ol start="<%= params[:page].to_i*@per_page - (@per_page - 1) if params[:page] %>">
+    <% @questions.each do |question| %>
+      <li><%= question.text %>
+      <%= link_to 'Show', question %>
+      <%= link_to 'Edit', edit_question_path(question) %>
+      <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<ol>
+	<% question.answers.each do |answer| %>
+	  <li><%= "+" if answer.right %><%= answer.text %>
+	<% end %>
+	</ol>
+    <% end %>
+</ol>
+<br />
+<%= will_paginate @questions, :previous_label => 'Назад', :next_label => 'Вперед' %>
+
