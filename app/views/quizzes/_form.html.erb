@@ -22,7 +22,7 @@
 	<%= label_tag subject.id, subject.name %>
       </td>
       <td>
-	<%= number_field_tag subject.id, 0, in: 0...subject.questions.count, step: 10 %>
+	<%= number_field_tag subject.id, 0, in: 0...subject.questions.count, step: 10, class: "q_count" %>
       </td>
     </tr>    
 <% end %>
