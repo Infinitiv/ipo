@@ -1,5 +1,5 @@
 set :application, "ipo"
-set :repository,  "./"
+set :repository,  "/home/markovnin/www/ipo"
 set :deploy_to, "/home/markovnin/www/ipo"
 
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
