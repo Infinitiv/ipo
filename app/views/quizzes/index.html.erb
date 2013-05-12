@@ -1,11 +1,11 @@
-<h1>Listing quizzes</h1>
+<h1>Перечень тестовых пакетов</h1>
 
     <% @quizzes.each do |quiz| %>
-<%= link_to quiz.name, quiz %>
 <%= link_to 'Edit', edit_quiz_path(quiz) %>
-<%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' } %><br/>
+<%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to quiz.name, quiz %><br/>
 <% end %>
 
 <br />
 
-<%= link_to 'New Quiz', new_quiz_path %>
+<%= link_to 'Новый пакет', new_quiz_path %>
