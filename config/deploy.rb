@@ -1,3 +1,4 @@
+require "bundler/capistrano"
 set :application, "ipo"
 set :repository,  "git@github.com:Infinitiv/ipo.git"
 set :deploy_to, "/home/markovnin/www/ipo"
