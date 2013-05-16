@@ -1,11 +1,19 @@
 <h1>Перечень тестовых пакетов</h1>
 
+<%= link_to 'Новый пакет', new_quiz_path %>
     <% @quizzes.each do |quiz| %>
-<%= link_to 'Edit', edit_quiz_path(quiz) %>
-<%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to quiz.name, quiz %><br/>
+    <ul>
+      <li>
+      <%= link_to(edit_quiz_path(quiz)) do %>
+        <i class="icon-pencil" title="Редактировать"></i>
+      <% end %>
+      <%= link_to(quiz, confirm: 'Уверены?', method: :delete) do %>
+        <i class="icon-remove" title="Удалить"></i>
+      <% end %>
+      <%= link_to quiz.name, quiz %>
+      <%= time_tag quiz.updated_at, :pubdate => true, :format => '%e.%m.%Y %R' %>
+    </ul>
 <% end %>
 
 <br />
 
-<%= link_to 'Новый пакет', new_quiz_path %>

@@ -81,7 +81,7 @@ class QuizzesController < ApplicationController
 	@questions << Subject.find(key).questions.first(value)
       end
       pdf = Prawn::Document.new(page_size: "A4", :info => {
-	:Title => @quiz.name + " " + t(:var, :scope => :quiz) + " " + (i + 1).to_s,
+	:Title => @quiz.name + " " + t(:var, :scope => :quiz) + " " + "%02d" % (i + 1),
 	:Author => "Vladimir Markovnin",
 	:Subject => "IPO ISMA",
 	:Creator => "ISMA",
@@ -102,13 +102,13 @@ class QuizzesController < ApplicationController
 	pdf.move_down 10
 	question.shuffle.each do |q|
 	  n += 1
-	  pdf.text n.to_s + ". " + q.text, :style => :italic
+	  pdf.text "%03d" % n + ". " + q.text, :style => :italic
 	  pdf.move_down 10
 	  m = 0
 	  q.answers.shuffle.each do |answer|
 	    m += 1
 	    @answers[n] = m if answer.right?
-	    pdf.text m.to_s + ". " + answer.text, :indent_paragraphs => 15
+	    pdf.text "%03d" % m + ". " + answer.text, :indent_paragraphs => 15
 	    pdf.move_down 10
 	  end
 	end
