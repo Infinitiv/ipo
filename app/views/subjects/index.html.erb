@@ -1,27 +1,14 @@
-<h1>Listing subjects</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<h1>Перечень предметов</h1>
+<%= link_to 'Добавить предмет', new_subject_path %>
     <% @subjects.each do |subject| %>
-    <tr>
-      <td><%= subject.name %></td>
-      <td><%= link_to 'Show', subject %></td>
-      <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
-      <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+    <ul>
+      <li>
+      <%= link_to(edit_subject_path(subject)) do %>
+        <i class="icon-pencil" title="Редактировать"></i>
+      <% end %>
+      <%= link_to(subject, confirm: 'Уверены?', method: :delete) do %>
+        <i class="icon-remove" title="Удалить"></i>
+      <% end %>
+      <%= link_to subject.name, subject %>
+    </ul>
     <% end %>
-  </tbody>
-</table>
-
-<br />
-
-<%= link_to 'New Subject', new_subject_path %>

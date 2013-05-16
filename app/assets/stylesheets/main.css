@@ -1,6 +1,12 @@
 input {
   width: 5em;
 }
+
 #quiz_name {
   width: 15em;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+	background-image: url("/assets/glyphicons-halflings.png");
 }
