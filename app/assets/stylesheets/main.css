@@ -2,7 +2,7 @@ input {
   width: 5em;
 }
 
-#quiz_name {
+#quiz_name, #subject_name {
   width: 15em;
 }
 

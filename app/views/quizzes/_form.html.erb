@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :name, 'Название дисциплины', class: "control-label".dasherize %>
+    <%= f.label :name, 'Название дисциплины', class: "control_label".dasherize %>
 <div class="controls">
     <%= f.text_field :name %>
   </div>
 </div>
 <div class="control-group">
-	<%= label_tag 'vars', 'Количество вариантов', class: "control-label".dasherize %>
+	<%= label_tag 'vars', 'Количество вариантов', class: "control_label".dasherize %>
 <div class="controls">
 	<%= number_field_tag 'vars', 0, in: 0..10, class: "vars" %>
 </div>
