@@ -108,7 +108,7 @@ class QuizzesController < ApplicationController
 	  q.answers.shuffle.each do |answer|
 	    m += 1
 	    @answers[n] = m if answer.right?
-	    pdf.text "%03d" % m + ". " + answer.text, :indent_paragraphs => 15
+	    pdf.text m.to_s + ". " + answer.text, :indent_paragraphs => 15
 	    pdf.move_down 10
 	  end
 	end
@@ -121,7 +121,7 @@ class QuizzesController < ApplicationController
       pdf.text t(:answers, :scope => :quiz), :style => :bold, :size => 18
       pdf.column_box([0, pdf.cursor], :columns => 2, :width => pdf.bounds.width) do
 	@answers.each do |key, value|
-	    pdf.text t(:question, :scope => :quiz)+ ": " + key.to_s + ' - ' + value.to_s
+	    pdf.text t(:question, :scope => :quiz)+ ": " + "%03d" % key + ' - ' + value.to_s
 	end
       end
       @quiz.data = pdf.render
