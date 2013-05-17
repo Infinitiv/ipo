@@ -1,8 +1,16 @@
 <h1>Перечень тестовых пакетов</h1>
 
-<%= link_to 'Новый пакет', new_quiz_path %>
-    <% @quizzes.each do |quiz| %>
+<%= link_to 'Новый пакет', new_quiz_path %><br />
+    <% @quizzes.each do |date, array| %>
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+<%= link_to date, "#" + date.to_s, class: "accordion-toggle", data: {toggle: "collapse", parent: "#accordion2"} %>
+</div>
+    <div id="<%= date.to_s %>" class="accordion-body collapse">
+      <div class="accordion-inner">
     <ul>
+    <% array.each do |quiz| %>
       <li>
       <%= link_to(edit_quiz_path(quiz)) do %>
         <i class="icon-pencil" title="Редактировать"></i>
@@ -12,8 +20,10 @@
       <% end %>
       <%= link_to quiz.name, quiz %>
       <%= time_tag quiz.updated_at, :pubdate => true, :format => '%e.%m.%Y %R' %>
+    <% end %>
     </ul>
-<% end %>
-
-<br />
+      </div>
+    </div>
+  </div>
+    <% end %>
 

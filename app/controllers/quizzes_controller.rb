@@ -4,7 +4,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes
   # GET /quizzes.json
   def index
-    @quizzes = Quiz.all
+    @quizzes = Quiz.all.group_by {|quiz| quiz.created_at.to_date}
   end
 
   # GET /quizzes/1
