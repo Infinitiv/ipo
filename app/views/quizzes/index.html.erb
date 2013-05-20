@@ -12,14 +12,10 @@
     <ul>
     <% array.each do |quiz| %>
       <li>
-      <%= link_to(edit_quiz_path(quiz)) do %>
-        <i class="icon-pencil" title="Редактировать"></i>
-      <% end %>
       <%= link_to(quiz, confirm: 'Уверены?', method: :delete) do %>
         <i class="icon-remove" title="Удалить"></i>
       <% end %>
       <%= link_to quiz.name, quiz %>
-      <%= time_tag quiz.updated_at, :pubdate => true, :format => '%e.%m.%Y %R' %>
     <% end %>
     </ul>
       </div>

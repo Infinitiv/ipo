@@ -74,7 +74,7 @@ class QuizzesController < ApplicationController
     end
     
     def gen_var(i, counts)
-      @quiz = Quiz.new(name: quiz_params[:name] + " " + t(:var, :scope => :quiz) + " " + (i + 1).to_s)
+      @quiz = Quiz.new(name: quiz_params[:name] + " " + t(:var, :scope => :quiz) + " " + "%02d" % (i + 1))
       @questions = Array.new
       @answers = Hash.new
       counts.each do |key, value|
