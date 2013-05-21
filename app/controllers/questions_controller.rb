@@ -25,25 +25,13 @@
   # POST /questions
   # POST /questions.json
   def create
+    c = MyArray.new
     data = question_params[:file].read.force_encoding("UTF-8")
     data = convert_array(data)
-    data.each do |s|
-      if s[0][0].to_i == 1
-	@question = Question.new
-	@question.subject_id = question_params[:subject_id]
-	@question.text = s[1].strip
-	@question.save
-      else
-	@answer = Answer.new
-	@answer.question_id = @question.id
-	@answer.text = s[1].strip
-	@answer.right = true if s[2].to_i == 1
-	@answer.save
-      end
-    end
-
+    subject_id = question_params[:subject_id]
+    c.insert_in_db(data, subject_id)
     respond_to do |format|
-        format.html { redirect_to questions_url, notice: 'Questions was successfully created.' }
+        format.html { redirect_to questions_url, notice: 'Questions will successfully created :-)' }
         format.json { render action: 'index', status: :created, location: @questions }
     end
   end
@@ -91,4 +79,25 @@
       end
       return a
     end
+
+    def insert_in_db(data, subject_id)
+      @data = data
+      @subject_id = subject_id
+	@data.each do |s|
+	  if s[0][0].to_i == 1
+	    @question = Question.new
+	    @question.subject_id = @subject_id
+	    @question.text = s[1].strip
+	    @question.save
+	  else
+	    @answer = Answer.new
+	    @answer.question_id = @question.id
+	    @answer.text = s[1].strip
+	    @answer.right = true if s[2].to_i == 1
+	    @answer.save
+	  end
+	end
+    end
+    handle_asynchronously :insert_in_db
+    
 end

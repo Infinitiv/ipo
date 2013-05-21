@@ -41,3 +41,5 @@ gem 'thin'
 gem 'will_paginate'
 gem 'prawn'
 gem 'mysql2'
+gem 'delayed_job', '~> 4.0.0.beta1'
+gem "delayed_job_active_record", "~> 4.0.0.beta2"
