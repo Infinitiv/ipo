@@ -10,5 +10,6 @@
         <i class="icon-remove" title="Удалить"></i>
       <% end %>
       <%= link_to subject.name, subject %>
+      <%= " (#{subject.questions.count})" %>
     </ul>
     <% end %>
