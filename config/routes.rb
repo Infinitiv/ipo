@@ -1,4 +1,6 @@
 Ipo::Application.routes.draw do
+  resources :users
+
   resources :quizzes
 
   resources :answers
@@ -14,7 +16,7 @@ Ipo::Application.routes.draw do
   # root to: 'welcome#index'
   
   root to: 'subjects#index', as: :index
-
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -36,6 +38,11 @@ Ipo::Application.routes.draw do
   #     end
   #   end
 
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    get 'logout' => :destroy
+  end
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

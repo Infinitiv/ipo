@@ -1,14 +1,16 @@
 <h1>Перечень предметов</h1>
-<%= link_to 'Добавить предмет', new_subject_path %>
+<%= link_to 'Добавить предмет', new_subject_path unless current_user.nil? %>
     <% @subjects.each do |subject| %>
     <ul>
       <li>
+    <% unless current_user.nil? %>
       <%= link_to(edit_subject_path(subject)) do %>
         <i class="icon-pencil" title="Редактировать"></i>
       <% end %>
       <%= link_to(subject, confirm: 'Уверены?', method: :delete) do %>
         <i class="icon-remove" title="Удалить"></i>
       <% end %>
+    <% end %>
       <%= link_to subject.name, subject %>
       <%= " (#{subject.questions.count})" %>
     </ul>

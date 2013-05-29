@@ -4,8 +4,10 @@
     <% @questions.each do |question| %>
       <li><%= question.text %>
       <%= link_to 'Show', question %>
-      <%= link_to 'Edit', edit_question_path(question) %>
-      <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% unless current_user.nil? %>
+	<%= link_to 'Edit', edit_question_path(question) %>
+	<%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
 	<ol>
 	<% question.answers.each do |answer| %>
 	  <li><%= answer.text %>

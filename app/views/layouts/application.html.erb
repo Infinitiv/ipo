@@ -4,12 +4,14 @@
   <title>Ipo</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
-<%= favicon_link_tag "application" %>
+  <%= favicon_link_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <div class="container">
     <%= render '/layouts/nav_up' %>
+    <%= flash[:notice] %>
+    <%= flash[:error] %>
     <%= yield %>
   </div>
   <!-- Yandex.Metrika counter -->

@@ -1,6 +1,7 @@
   class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :require_login, only: [:show, :index]
+  
   # GET /questions
   # GET /questions.json
   def index

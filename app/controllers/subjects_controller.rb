@@ -1,5 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:show, :index]
 
   # GET /subjects
   # GET /subjects.json

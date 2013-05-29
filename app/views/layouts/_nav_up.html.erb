@@ -1,8 +1,20 @@
 <nav id="up" class="navbar-static-top">
 <ul class="nav nav-pills">
   <li><%= link_to 'Дисциплины', index_path %>
-  <li><%= link_to 'Загрузить тесты', new_question_path %>
-  <li><%= link_to 'Перечень тестов', quizzes_path %>
-  <li><%= link_to 'Генератор тестов', new_quiz_path %>
+  <% unless current_user.nil? %>
+    <li><%= link_to 'Загрузить тесты', new_question_path %>
+    <li><%= link_to 'Перечень тестов', quizzes_path %>
+    <li><%= link_to 'Генератор тестов', new_quiz_path %>
+  <% end %>
+  <li class="pull-right">
+        <div class="session">
+      <% if session[:user_id] %>
+          <%= link_to "Выйти", logout_path %>
+        </div>
+        <% else %>
+          <%= link_to 'Войти', login_path %>
+        </div>
+      <% end %>
+  <li>
 </ul>
 </nav>
