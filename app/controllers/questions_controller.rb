@@ -25,11 +25,10 @@
   # POST /questions
   # POST /questions.json
   def create
-    c = MyArray.new
     data = question_params[:file].read.force_encoding("UTF-8")
     data = convert_array(data)
     subject_id = question_params[:subject_id]
-    c.insert_in_db(data, subject_id)
+    insert_in_db(data, subject_id)
     respond_to do |format|
         format.html { redirect_to subjects_url, notice: 'Questions will successfully created :-)' }
         format.json { render action: 'index', status: :created, location: @questions }
@@ -98,6 +97,5 @@
 	  end
 	end
     end
-    handle_asynchronously :insert_in_db
     
 end
