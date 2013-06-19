@@ -64,6 +64,7 @@ GEM
     minitest (4.7.4)
     multi_json (1.7.3)
     mysql2 (0.3.11)
+    newrelic_rpm (3.6.4.122)
     pdf-reader (1.3.3)
       Ascii85 (~> 1.0.0)
       afm (~> 0.2.0)
@@ -138,6 +139,7 @@ DEPENDENCIES
   jquery-rails
   json (~> 1.7.7)
   mysql2
+  newrelic_rpm
   prawn
   rails (= 4.0.0.rc1)
   sass-rails (~> 4.0.0.rc1)
