@@ -59,6 +59,20 @@
       format.json { head :no_content }
     end
   end
+  
+  def export
+    subject_id = params[:subject_id]
+    data = ''
+    questions = Subject.find(subject_id).questions.all
+    questions.each do |q|
+      answers = q.answers
+      data << "# #{q.text}\n"
+	answers.each do |a|
+	  data << (a.right ? "+ #{a.text}\n" : "- #{a.text}\n")
+	end
+    end
+    send_data data, filename: 'q.txt'
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -6,6 +6,10 @@ Ipo::Application.routes.draw do
   resources :answers
 
   resources :questions
+  
+  controller :questions do
+    get 'export'
+  end
 
   resources :subjects
 
