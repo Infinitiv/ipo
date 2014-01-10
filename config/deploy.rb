@@ -26,3 +26,12 @@ role :db,  "isma_ror", :primary => true # This is where Rails migrations will ru
 # end
 set :use_sudo, false
 set :user, "markovnin"
+
+namespace :deploy do
+  desc "Restart the Thin processes"
+  task :restart do
+    set :use_sudo, true
+    set :password, 'user'
+    run "#{try_sudo} service thin restart"
+  end
+end
